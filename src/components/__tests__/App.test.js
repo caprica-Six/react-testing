@@ -4,11 +4,13 @@ import App from 'components/App';
 import CommentBox from 'components/CommentBox';
 import CommentList from 'components/CommentList';
 
+// initialize the wrapped var ouside beforeEach() to fix scope
+let wrapped;
+
 // use helper function to avoid repetition with beforeEach()
 beforeEach(() => {
-    const wrapped = shallow(<App />);
+    wrapped = shallow(<App />);
 });
-
 
 it('shows a comment box', () => {
     // shallow renders just the component, none of its children
