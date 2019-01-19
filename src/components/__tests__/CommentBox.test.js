@@ -45,4 +45,6 @@ it('has a textarea that users can type in', () => {
     // force component to re-render as setState() is asynchronous and does not re-render instantly.
     wrapped.update();
 
+    // assertion
+    expect(wrapped.find('textarea').prop('value')).toEqual('new comment');
 });
