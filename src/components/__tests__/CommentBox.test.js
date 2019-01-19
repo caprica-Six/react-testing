@@ -20,7 +20,22 @@ afterEach(() => {
     wrapped.unmount();
 });
 
+// Show a text area and a button 
 it('has a text area and a button', () => {
     expect(wrapped.find('textarea').length).toEqual(1);
     expect(wrapped.find('button').length).toEqual(1);
+});
+
+/* Textarea
+
+- Find the textarea element 
+- Simulate a 'change event'
+- Provide a fake event object 
+- Force the component to udpate 
+- Assert that the textarea's value has changed
+
+*/
+
+it('has a textarea', () => {
+    expect(wrapped.find('textarea').length).toEqual(1);
 });
