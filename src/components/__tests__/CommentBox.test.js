@@ -41,4 +41,8 @@ it('has a textarea that users can type in', () => {
         // mock object
         target: { value: 'new comment' }
     });
+
+    // force component to re-render as setState() is asynchronous and does not re-render instantly.
+    wrapped.update();
+
 });
