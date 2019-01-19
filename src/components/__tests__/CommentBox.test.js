@@ -48,3 +48,19 @@ it('has a textarea that users can type in', () => {
     // assertion
     expect(wrapped.find('textarea').prop('value')).toEqual('new comment');
 });
+
+/* When the input is submitted, textarea should get emptied */
+
+it('when form is submitted text area gets empty', () => {
+    wrapped.find('textarea').simulate('change', {
+        target: { value: 'new comment' }
+    });
+
+    wrapped.update();
+    // simulate the submit event on the form not click event on the button 
+    wrapped.find('form').simulate('submit');
+    // force update
+    wrapped.update();
+
+    expect(wrapped.find('textarea').prop('value')).toEqual('');
+});
