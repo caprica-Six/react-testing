@@ -36,31 +36,31 @@ it('has a text area and a button', () => {
 
 */
 
-it('has a textarea that users can type in', () => {
-    wrapped.find('textarea').simulate('change', {
-        // mock object
-        target: { value: 'new comment' }
+// groups together some common behaviour, avoids repitition
+describe('the text area', () => {
+    beforeEach(()=> {
+        wrapped.find('textarea').simulate('change', {
+            // mock object
+            target: { value: 'new comment' }
+        });
+
+        // force component to re-render as setState() is asynchronous and does not re-render instantly.
+        wrapped.update();
     });
 
-    // force component to re-render as setState() is asynchronous and does not re-render instantly.
-    wrapped.update();
-
-    // assertion
-    expect(wrapped.find('textarea').prop('value')).toEqual('new comment');
-});
-
-/* When the input is submitted, textarea should get emptied */
-
-it('when form is submitted text area gets empty', () => {
-    wrapped.find('textarea').simulate('change', {
-        target: { value: 'new comment' }
+    it('has a textarea that users can type in', () => {
+        // assertion
+        expect(wrapped.find('textarea').prop('value')).toEqual('new comment');
     });
 
-    wrapped.update();
-    // simulate the submit event on the form not click event on the button 
-    wrapped.find('form').simulate('submit');
-    // force update
-    wrapped.update();
+    /* When the input is submitted, textarea should get emptied */
 
-    expect(wrapped.find('textarea').prop('value')).toEqual('');
+    it('when form is submitted text area gets empty', () => {
+        // simulate the submit event on the form not click event on the button 
+        wrapped.find('form').simulate('submit');
+        // force update
+        wrapped.update();
+
+        expect(wrapped.find('textarea').prop('value')).toEqual('');
+    });
 });
