@@ -29,13 +29,16 @@ it('has a text area and a button', () => {
 /* Textarea
 
 - Find the textarea element 
-- Simulate a 'change event'
+- Simulate a 'change event' itself, not the onChange() callback
 - Provide a fake event object 
 - Force the component to udpate 
 - Assert that the textarea's value has changed
 
 */
 
-it('has a textarea', () => {
-    expect(wrapped.find('textarea').length).toEqual(1);
+it('has a textarea that users can type in', () => {
+    wrapped.find('textarea').simulate('change', {
+        // mock object
+        target: { value: 'new comment' }
+    });
 });
