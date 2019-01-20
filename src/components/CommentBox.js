@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux';
+import * as actions from 'actions';
 
 class CommentBox extends Component {
     state = { comment: '' };
@@ -12,7 +14,8 @@ class CommentBox extends Component {
         event.preventDefault();
 
         // 2. Clear out text once form is submitted
-        // TODO - call an action creatior  - REDUX.
+        // 3. Call an action creatior  - REDUX.
+        this.props.saveComment(this.state.comment);
         
         this.setState({ comment: '' });
     }
@@ -30,4 +33,4 @@ class CommentBox extends Component {
     }
 }
 
-export default CommentBox;
+export default connect(null, actions)(CommentBox);
