@@ -1,6 +1,6 @@
 import { SAVE_COMMENT } from 'actions/types';
 
-// create he actioncreator
+// create the Action Creator
 
 export function saveComment(comment) {
     return {
